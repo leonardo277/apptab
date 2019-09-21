@@ -11,7 +11,7 @@ import { ProdutosService } from '../shared/produtos.service';
 export class ListaProdutosPage implements OnInit {
   produtos: Observable<any[]>;
   categorias: Observable<any[]>;
-
+  categoriaSelecionada:string;
   constructor(private router: Router,
               private produtosService: ProdutosService) { }
 
@@ -20,6 +20,11 @@ export class ListaProdutosPage implements OnInit {
     this.categorias = this.produtosService.getCategoriasAll();
   }
 
-
-
+  buscarProdutos(){
+  this.produtos = this.produtosService.getAll(this.categoriaSelecionada);
+  }
+  
+  adicionarProduto(produtoKey: string){
+    this.router.navigate(['pedido/carrinho/novo-item', produtoKey]);
+  }
 }

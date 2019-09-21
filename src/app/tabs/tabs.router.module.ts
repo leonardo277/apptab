@@ -50,7 +50,16 @@ const routes: Routes = [
         loadChildren: '../enderecos/lista-endereco/lista-endereco.module#ListaEnderecoPageModule'
       }
     ]
-  },  
+  }, 
+  {
+    path: 'pedido',
+    children: [
+      {
+        path: 'carrinho/novo-item/:key',
+        loadChildren: '../pedidos/form-item-pedido/form-item-pedido.module#FormItemPedidoPageModule'
+      }
+    ]
+  }, 
   {
     path: '',
     redirectTo: '/tabs/produtos',
