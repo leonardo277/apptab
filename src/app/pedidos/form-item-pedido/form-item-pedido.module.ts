@@ -17,9 +17,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule.forChild(routes),
-    SharedModule
-
+    SharedModule,
+    RouterModule.forChild(routes)
   ],
   declarations: [FormItemPedidoPage]
 })

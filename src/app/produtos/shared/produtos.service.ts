@@ -24,20 +24,26 @@ export class ProdutosService {
     )
   }
 
-  getCategoriasAll() {
-    return this.db.list(FirebasePath.CATEGORIAS).snapshotChanges().pipe(
+  getCategoriasAll(){
+    return this.db.list(FirebasePath.CATEGORIAS)
+    .snapshotChanges().pipe(
       map(changes => {
-        return changes.map(m => ({ key: m.payload.key, ...m.payload.val() }))
+        return changes.map(m => ({key: m.payload.key, ...m.payload.val() }));
+      })
+    )
+  }
+  
+  // Buscar Produtos por uma Key
+  getByKey(key: string){
+                 // 'produtos/'+'-L5sWLlqdjxFeH6a19Q-'
+                 //  path ='produtos/-L5sWLlqdjxFeH6a19Q-'
+    const path = `${FirebasePath.PRODUTOS}${key}`;
+    return this.db.object(path).snapshotChanges().pipe(
+      map(change => {
+        return ({ key: change.key, ...change.payload.val() });
       })
     )
   }
 
-getByKey(key:string){
-const path = `${FirebasePath.PRODUTOS}${key}`;
-return this.db.object(path).snapshotChanges().pipe(map(change => {return({key: change.key, ...change.payload.val()});
-})
   
-)
-}
-
 }
