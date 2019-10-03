@@ -61,6 +61,7 @@ export class EnderecoService {
    }
 
     else {
+      
     enderecoRef.push(endereco)
     .then(  (result: any) => resolve(result.key) );
 

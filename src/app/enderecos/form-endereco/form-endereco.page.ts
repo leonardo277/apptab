@@ -19,11 +19,29 @@ export class FormEnderecoPage implements OnInit {
 
   
 
-  constructor( private enderecoService: EnderecoService, private formBuilder: FormBuilder,private route: ActivatedRoute, private toast: ToastService)
+  constructor( private enderecoService: EnderecoService,
+     private formBuilder: FormBuilder,
+     private route: ActivatedRoute,
+     private toast: ToastService)
    { }
 
   ngOnInit() { 
     this.criarFormulario();
+    let key = this.route.snapshot.paramMap.get('key');
+    if(key){
+      const subscribe = this.enderecoService.getByKey(key).subscribe( (endereco: any) =>
+      {
+      subscribe.unsubscribe();
+      this.key = endereco.key;
+      this.formEndereco.patchValue ({
+        cep: endereco.cep,
+        logradouro: endereco.logradouro,
+        numero: endereco.numero,
+        complemento: endereco.complemento,
+        bairro: endereco.bairro
+      })
+     })
+   }
   }
 
   criarFormulario() {
