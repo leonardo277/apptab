@@ -1,10 +1,9 @@
 export const firebaseconfig = {
-  apiKey: "AIzaSyACKvdfRKUNR_sYyoWEWCzF6p0qidkoB6Q",
-    authDomain: "delivery-leonardo.firebaseapp.com",
-    databaseURL: "https://delivery-leonardo.firebaseio.com",
-    projectId: "delivery-leonardo",
-    storageBucket: "delivery-leonardo.appspot.com",
-    messagingSenderId: "97746660578",
-    appId: "1:97746660578:web:9db4f610aa575e20"
-
+  apiKey: "AIzaSyBB1UbrTzMQR5mieOLpagnXAacbuX9XYpg",
+    authDomain: "projeto-64ab8.firebaseapp.com",
+    databaseURL: "https://projeto-64ab8.firebaseio.com",
+    projectId: "projeto-64ab8",
+    storageBucket: "projeto-64ab8.appspot.com",
+    messagingSenderId: "499170766424",
+    appId: "1:499170766424:web:b06f034ed06cb0d3f1642d"
 }

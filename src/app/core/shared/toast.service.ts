@@ -15,6 +15,7 @@ export class ToastService {
       duration:3000,
       position: 'bottom'
     });
+
     toast.present();
   }
 

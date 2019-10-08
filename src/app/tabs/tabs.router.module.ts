@@ -16,6 +16,7 @@ const routes: Routes = [
           }
         ]
       },
+
       {
         path: 'tab2',
         children: [
@@ -59,6 +60,7 @@ const routes: Routes = [
       }
     ]
   },  
+
   {
     path: 'pedido',
     children: [
@@ -73,6 +75,7 @@ const routes: Routes = [
       }
     ]
   },    
+  
   {
     path: '',
     redirectTo: '/tabs/produtos',

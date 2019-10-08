@@ -26,7 +26,7 @@ import { firebaseconfig } from '../firebase-config';
     AngularFireAuthModule,
     AngularFireDatabaseModule
    ],
-  providers: [
+    providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
