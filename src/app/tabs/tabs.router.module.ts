@@ -17,7 +17,7 @@ const routes: Routes = [
         ]
       },
 
-      {
+      { 
         path: 'tab2',
         children: [
           {
@@ -74,13 +74,14 @@ const routes: Routes = [
         loadChildren: '../pedidos/lista-item-pedido/lista-item-pedido.module#ListaItemPedidoPageModule'
       }
     ]
-  },    
+  },
   
   {
     path: '',
     redirectTo: '/tabs/produtos',
     pathMatch: 'full'
   }
+
 ];
 
 @NgModule({
