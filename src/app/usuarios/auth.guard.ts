@@ -9,18 +9,18 @@ import { take, map, tap } from 'rxjs/operators';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router, private afAuth: AngularFireAuth) {}
+    constructor(private router: Router, private afAuth: AngularFireAuth) {}
 
-  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
-    return this.afAuth.user.pipe(
-      take(1),
-      map(user => !!user),
-      tap(usuarioLogado => {
-        if (!usuarioLogado) {
-          this.router.navigate(['/login']);
-        }
-      })
-    )
-  }
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+      return this.afAuth.user.pipe(
+        take(1),
+        map(user => !!user),
+        tap(usuarioLogado => {
+          if (!usuarioLogado) {
+            this.router.navigate(['/login']);
+          }
+        })
+      )
+    }
 
 }

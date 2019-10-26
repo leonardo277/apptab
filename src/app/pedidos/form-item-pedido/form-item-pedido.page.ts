@@ -68,8 +68,8 @@ total: number = 0;
   removerQuantidade(){
     let qtd = this.form.value.quantidade;
     qtd--;
-    if(qtd <=0)
-      qtd=1;
+    if (qtd <=0)
+        qtd=1;
 
     this.atualizaTotal(qtd);  
   }
@@ -83,7 +83,7 @@ total: number = 0;
   ){if (this.form.valid){
     this.carrinhoService.insert(this.form.value)
     .then(() =>{this.toast.show('Produto Adicionado com sucesso ao carrinho');
-     this.router.navigate(['/tabs/produtos']);
+                this.router.navigate(['/tabs/produtos']);
   })
   }
 
