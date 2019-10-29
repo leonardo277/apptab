@@ -74,7 +74,7 @@ const routes: Routes = [
         loadChildren: '../pedidos/lista-item-pedido/lista-item-pedido.module#ListaItemPedidoPageModule'
       },
       {
-        path: 'form-pagamento',
+        path: 'forma-pagamento',
         loadChildren: '../pedidos/form-pagamento/form-pagamento.module#FormPagamentoPageModule'
       }
     ]

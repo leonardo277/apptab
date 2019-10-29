@@ -6,6 +6,7 @@ import { DatePipe } from '@angular/common';
 import { Key } from 'protractor';
 import { FirebasePath } from 'src/app/core/shared/firebase-path';
 import { map } from 'rxjs/operators';
+import { reject, resolve } from 'q';
 
 @Injectable({
   providedIn: 'root'
@@ -27,10 +28,39 @@ export class PedidoService {
   constructor(private db: AngularFireDatabase, private afAuth: AngularFireAuth,
     private carrinhoService: CarrinhoService, private dateFormat: DatePipe) {}
  
-   gerarPedido(pedido: any){
-
-   }
-   
+    gerarPedido(pedido: any){
+      return new Promise( (resolve, reject) => {
+        const subscribe = this.carrinhoService.getAll().subscribe(produtos => {
+          subscribe.unsubscribe();
+  
+          const pedidoRef = this.criarObjetoPedido(pedido);
+          const pedidoKey = this.db.createPushId();
+          const pedidoPath = `${FirebasePath.PEDIDOS}${pedidoKey}`;
+  
+          let pedidoObj = {};
+          pedidoObj[pedidoPath] = pedidoRef;
+  
+          produtos.forEach( (produto: any) => {
+            const pedidoProdutoPath = `${FirebasePath.PEDIDOS_PRODUTOS}${pedidoKey}/${produto.produtoKey}`;
+            pedidoObj[pedidoProdutoPath] = {
+              produtoNome: produto.produtoNome,
+              produtoDescricao: produto.Descricao,
+              observacao: produto.observacao,
+              produtoPreco: produto.produtoPreco,
+              quantidade: produto.quantidade,
+              total: produto.total
+            };
+          }); 
+          this.db.object('/').update(pedidoObj)
+            .then(() => {
+              this.carrinhoService.clear()
+                .then(() => resolve())
+                .catch(() => reject ());
+            })
+            .catch( () => reject());
+        })
+      })
+    }  
    private criarObjetoPedido(pedido:any){
      const numeroPedido = '#' + this.dateFormat.transform(new Date(), 'ddMMyyyyHHmmss');
      const dataPedido = this.dateFormat.transform(new Date(), 'dd/MM/yyyy');
@@ -45,7 +75,7 @@ export class PedidoService {
        usuarioKey: this.afAuth.auth.currentUser.uid,
        usuarioNome: this.afAuth.auth.currentUser.displayName,
        //TECNICA DE FILTRO DE VARIOS CAMPOS
-       usuarioStatus: this.afAuth.auth.currentUser.uid . '_' + PedidoService.STATUS.ENVIADO,
+       usuarioStatus: this.afAuth.auth.currentUser.uid + '_' + PedidoService.STATUS.ENVIADO,
        total: pedido.total
      }
 

@@ -65,8 +65,7 @@ export class CarrinhoService {
   }
 
   clear(){
-  
-    
+  return this.getCarrinhoProdutosRef().remove();
   }
 
 }

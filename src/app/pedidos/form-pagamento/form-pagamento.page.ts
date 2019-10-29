@@ -22,7 +22,7 @@ total: number = 0;
 formasPagamento: Array<any> = [
   {valor: PedidoService.TIPO_FORMA_PAGAMENTO.DINHEIRO, descricao: "Dinheiro"},
   {valor: PedidoService.TIPO_FORMA_PAGAMENTO.CARTAO, descricao: "Cartao de Credito/débito"}
-                              ]
+            ]
 
   enderecoSelecionado: string = this.MENSAGEM_ENDERECO_VAZIO;
 
@@ -59,7 +59,7 @@ formasPagamento: Array<any> = [
     this.modalCtrl.create({
     component: ListaEnderecoPage,
     componentProps: {
-    selecionaEndereco: true
+    selecionarEndereco: true
     },
     showBackdrop: true,
     backdropDismiss: true
@@ -74,7 +74,7 @@ formasPagamento: Array<any> = [
       });
 
       modal.present();
-        
+
        });
 
   }

@@ -14,6 +14,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { firebaseconfig } from '../firebase-config';
+import { DatePipe } from '@angular/common';
+import { ListaEnderecoPage } from './enderecos/lista-endereco/lista-endereco.page';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,11 +27,13 @@ import { firebaseconfig } from '../firebase-config';
     AngularFireModule.initializeApp(firebaseconfig),
     AngularFireAuthModule,
     AngularFireDatabaseModule
+    
    ],
     providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
