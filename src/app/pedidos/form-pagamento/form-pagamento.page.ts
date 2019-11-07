@@ -6,7 +6,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { subscribeOn } from 'rxjs/operators';
+
 import { ListaEnderecoPage } from 'src/app/enderecos/lista-endereco/lista-endereco.page';
 
 @Component({
@@ -47,7 +47,7 @@ formasPagamento: Array<any> = [
 
   criarFormulario(){
     this.form = this.formBuilder.group ({
-      formaPagamento: [''],
+      formPagamento: [''],
       trocoPara: [''],
       tipoCartao: [''],
       enderecoEntrega: [''],
@@ -89,7 +89,7 @@ formasPagamento: Array<any> = [
         })
         .catch( () =>{
           this.toast.show('Erro ao salvar o pedido');
-        })
+        });
       }
     }
   }

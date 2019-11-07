@@ -15,7 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { firebaseconfig } from '../firebase-config';
 import { DatePipe } from '@angular/common';
-import { ListaEnderecoPage } from './enderecos/lista-endereco/lista-endereco.page';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +26,7 @@ import { ListaEnderecoPage } from './enderecos/lista-endereco/lista-endereco.pag
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseconfig),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
     
    ],
     providers: [

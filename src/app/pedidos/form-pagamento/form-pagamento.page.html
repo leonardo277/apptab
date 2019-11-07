@@ -19,21 +19,21 @@
         </ion-item-divider>
         <ion-item>
           <ion-label>Forma de pagamento</ion-label>
-          <ion-select formControlName="formaPagamento">
+          <ion-select formControlName="formPagamento">
             <ion-select-option value="" [selected]="true">- Escolha -</ion-select-option>
-            <ion-select-option *ngFor="let formaPagamento of formasPagamento" [value]="formaPagamento.valor">{{
-              formaPagamento.descricao }}</ion-select-option>
+            <ion-select-option *ngFor="let formPagamento of formasPagamento" [value]="formPagamento.valor">{{
+              formPagamento.descricao }}</ion-select-option>
           </ion-select>
         </ion-item>
 
         <!-- se for dinheiro -->
-        <ion-item *ngIf="form.value.formaPagamento == 1">
+        <ion-item *ngIf="form.value.formPagamento == 1">
           <ion-label>Troco para</ion-label>
           <ion-input type="number" step="1" formControlName="trocoPara"></ion-input>
         </ion-item>
 
         <!-- se for cartão -->
-        <ion-item *ngIf="form.value.formaPagamento == 2">
+        <ion-item *ngIf="form.value.formPagamento == 2">
           <ion-label>Qual cartão</ion-label>
           <ion-select formControlName="tipoCartao">
             <ion-select-option value="" [selected]="true">- Escolha -</ion-select-option>
